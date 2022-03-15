@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% import "macros.html" as macro with context %}
+
+{% block content %}
+
+
+<aside class="sidebar">
+    {% include 'sidebar.html' %}
+</aside>
+
+<section class="content">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+    {% for gig in gigs %}
+    <p> {{gig.title}} </p>
+    <p> {{gig.price}} </p>
+    <p> {{gig.category}} </p>
+
+    {% if current_user.urole=='TRAINEE'%}
+    <a href="{{url_for('main.book_gig', gig_id=gig.id)}}  ">Book Gig</a>
+    {% endif %}
+
+    {% endfor %}
+
+</section>
+
+<aside class="quote">
+
+
+</aside>
+
+
+{% endblock %}

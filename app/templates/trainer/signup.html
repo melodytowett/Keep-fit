@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="box">
+    <h3 class="heading-3">Trainer Sign Up</h3>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="is-danger">
+        {{messages[0]}}.
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/trainer/signup" class="auth" autocomplete="off">
+        <label for="email" class="auth__label">Email</label>
+        <input required type="email" name="email" class="auth__input">
+
+        <label for="username" class="auth__label">Username</label>
+        <input required type="text" name="username" class="auth__input">
+
+        <label for="phone_number" class="auth__label">Tel:Number</label>
+        <input required type="text" name="phone_number" class="auth__input">
+
+        <label for="password" class="auth__label">Password</label>
+        <input required type="password" name="password" class="auth__input">
+
+        <button class="btn">Sign Up</button>
+    </form>
+</div>
+
+{% endblock %}

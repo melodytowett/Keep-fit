@@ -1,0 +1,71 @@
+{% macro displayBlogs(gigs) %}
+
+<div class="posts">
+    {{ gigs|length }}
+
+    {% for blog in gigs %}
+
+
+    <div class="post">
+
+
+        <div class="post-info">
+
+            <div class="post__header">
+                <span class="post__author">@{{blog.user.username}} </span>
+                <span class="post__date">{{blog.date_posted.strftime('%b %d')}}
+                </span>
+
+
+            </div>
+            <a href="{{url_for('main.blog', blog_id=blog.id)}} ">
+                <h3 class="post__title">{{blog.title}} </h3>
+                <p class="post__content">
+                    {{blog.content}}
+                </p>
+            </a>
+
+
+            <div class="post__footer">
+                <a href="{{ url_for('main.category', category=blog.category) }} "
+                    class="post__category">#{{blog.category}} </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    <script>
+        const dotIcons = document.querySelectorAll('.update-icon');
+
+        dotIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                // Remove the active class from all icons
+                document.querySelectorAll('.post-update__container').forEach(container => {
+                    container.classList.remove('hidden');
+                });
+
+                e.preventDefault();
+                const postUpdate = e.target.parentElement;
+                const postUpdateContainer = postUpdate.querySelector('.post-update__container');
+                postUpdateContainer.classList.add('hidden');
+            });
+        });
+
+
+
+
+
+
+
+    </script>
+
+
+</div>
+
+
+{% endmacro %}
