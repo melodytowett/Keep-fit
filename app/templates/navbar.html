@@ -15,23 +15,24 @@
         <ul class="nav navbar-nav">
           <li><a href="#">About Us</a></li>
           <ul class="nav navbar-nav">
-            <li><a href="#">Services</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+            <li><a href="#" >Services</a>
             </li>
+
             <ul class="nav navbar-nav navbar-right">
+              {% if current_user.is_authenticated %}
               <li><a href="#">Profile</a></li>          
-              <li><a href="#">Sign out</a></li>
-            
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDrowndown" role="button">Sign in</a></li>
-                
-                <li><a class="dropdown-item" href="#"> As Trainer</a></li>
-                <li><a class="dropdown-item" href="#">As Trainee</a></li>
+              <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+              {% else %}
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 450px; margin-top: 10px;">
+                  Sign in
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                 <li> <a class="dropdown-item" href=" {{url_for('auth.login')}} "> As Trainer</a></li>
+                 <li> <a class="dropdown-item" href=" {{url_for('auth.login_trainee')}} ">As Trainee</a></li>
+                </div>
+              </div>
+               {% endif %}
             </ul>
           </div>
         </div>
