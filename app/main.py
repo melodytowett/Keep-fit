@@ -8,6 +8,10 @@ from app import app, db
 from .models import Trainer, Trainee, Gig, Enroll
 
 
+import requests
+import random
+
+
 main = Blueprint('main', __name__)
 
 
@@ -68,3 +72,23 @@ def book_gig(gig_id):
     print(gig.enrolls)
 
     return redirect(url_for("main.index"))
+
+
+@main.route('/view_gig/<gig_id>', methods=['GET', 'POST'])
+def view_gig(gig_id):
+
+    gig = Gig.query.filter_by(id=gig_id).first()
+    gig_category = gig.category
+
+    url = f"https://exercisedb.p.rapidapi.com/exercises/bodyPart/{gig_category}"
+
+    headers = {
+        'x-rapidapi-host': "exercisedb.p.rapidapi.com",
+        'x-rapidapi-key': "f50615db51msh1895e876776f30ep1045d3jsn5d2af3e0380f"
+    }
+
+    response = requests.request("GET", url, headers=headers)
+    random_index = random.randint(0, 10)
+    dis_gig = response.json()[random_index]
+
+    return render_template('view_gig.html', dis_gig=dis_gig)

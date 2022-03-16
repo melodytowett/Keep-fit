@@ -40,8 +40,15 @@
         {% endif %}
         {% endfor %}
 
+        <br>
+
+        <a href="{{url_for('main.view_gig', gig_id=gig.id)}}  ">View Gig</a>
         {% endif %}
+
+
     </div>
+
+    <hr>
 
 
     {% endfor %}
