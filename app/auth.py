@@ -121,4 +121,4 @@ def trainee_login():
 def logout():
     logout_user()
 
-    return render_template('index.html')
+    return redirect(url_for('main.index'))

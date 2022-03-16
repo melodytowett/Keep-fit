@@ -18,7 +18,6 @@ class Trainer(User):
 
 
 class Trainee(User):
-
     gigs = db.relationship('Gig', backref='trainee', passive_deletes=True)
 
 

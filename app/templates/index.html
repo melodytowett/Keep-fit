@@ -21,13 +21,28 @@
 
 
     {% for gig in gigs %}
-    <p> {{gig.title}} </p>
-    <p> {{gig.price}} </p>
-    <p> {{gig.category}} </p>
 
-    {% if current_user.urole=='TRAINEE'%}
-    <a href="{{url_for('main.book_gig', gig_id=gig.id)}}  ">Book Gig</a>
-    {% endif %}
+
+    <div class="gig {{className}} ">
+
+
+        <p> {{gig.title}} </p>
+        <p> {{gig.price}} </p>
+        <p> {{gig.category}} </p>
+
+        {% if current_user.urole=='TRAINEE'%}
+        <a href="{{url_for('main.book_gig', gig_id=gig.id)}}  ">Book Gig</a>
+
+
+        {% for enroll in gig.enrolls %}
+        {% if enroll.trainee_id == current_user.id %}
+        <p class="active-gig"> You are enrolled </p>
+        {% endif %}
+        {% endfor %}
+
+        {% endif %}
+    </div>
+
 
     {% endfor %}
 

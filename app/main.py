@@ -14,9 +14,7 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def index():
     gigs = Gig.query.all()
-    if current_user.is_authenticated:
-        print(current_user.urole)
-    return render_template('index.html', gigs=gigs, )
+    return render_template('index.html', gigs=gigs)
 
 
 @main.route('/create_gig', methods=['GET', 'POST'])
