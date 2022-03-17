@@ -1,0 +1,20 @@
+<div class="box">
+    <h3 class="heading-3">Traineeee Login</h3>
+
+
+    <form method="POST" class="auth" autocomplete="off">
+        <label for="username">Username</label>
+        <input required (ngSubmit)="loginTrainee()" type="text" name="username"
+            class="auth__input">
+
+        <label for=" password">Password</label>
+        <input required type="password" name="password" class="auth__input">
+
+        <label class="checkbox">
+            <input type="checkbox" name="remember">
+            Remember me
+        </label>
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div>

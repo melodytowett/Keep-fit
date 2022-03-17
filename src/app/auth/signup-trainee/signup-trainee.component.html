@@ -1,0 +1,18 @@
+<div class="box">
+    <h3 class="heading-3">Traineeeee Sign Up</h3>
+    <form (ngSubmit)="signupTrainee()" class="auth" method="post">
+        <label for="email" class="auth__label">Email</label>
+        <input required [(ngModel)]="email" type="email" name="email" class="auth__input">
+
+        <label for="username" class="auth__label">Username</label>
+        <input required [(ngModel)]="username" type="text" name="username"
+            class="auth__input">
+
+        <label for="password" class="auth__label">Password</label>
+        <input required [(ngModel)]="password" type="password" name="password"
+            class="auth__input">
+
+
+        <input type="submit" class="btn btn--submit" value="Signup">
+    </form>
+</div>
