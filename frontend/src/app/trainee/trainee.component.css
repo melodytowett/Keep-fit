@@ -32,7 +32,7 @@
     background-image: url(../../assets/images/white-background.png);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 55rem;
+    height: 65rem;
 }
 
 .card {
@@ -46,19 +46,55 @@
 
 .cards {
     display: flex;
-    padding: 20px;
+    padding: 10px;
 }
 
 .cards h2 {
     margin: 20px 0px 0px 20px;
     padding: 15px 0px;
+    font-weight: 900;
 }
 
 .colored-text {
     color: #ECE30E;
-    margin: 0px 20px 0px 60px;
+    margin: 0px 20px 0px 200px;
+}
+
+.colored2-text {
+    color: #ECE30E;
+    margin: 0px 0px 0px 120px;
+}
+
+.colored-text p {
+    margin: 0;
+    padding: 0;
+}
+
+.colored2-text p {
+    margin: 0;
+    padding: 0;
 }
 
 .vr {
     border: 1px solid #000;
+}
+
+.resume_gigs button {
+    background-color: #FFAD01;
+    border: none;
+    border-radius: 10px;
+    margin: 0px 0px 0px 50%;
+    padding: 8px 15px;
+}
+
+.booking-gigs button {
+    background-color: #FFAD01;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0px 0px 50%;
+    padding: 8px 15px;
+}
+
+.green_border {
+    border: 8px solid #6bfa2b;
 }

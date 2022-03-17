@@ -33,6 +33,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 30rem;
+    margin-bottom: 50px;
 }
 
 .card {
@@ -72,3 +73,10 @@
     padding: 8px 15px;
 }
 
+.editing-gigs button {
+    background-color: #FFAD01;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0px 0px 50%;
+    padding: 8px 15px;
+}
