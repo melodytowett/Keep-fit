@@ -1,3 +1,5 @@
 migrations/
 start.sh
-__pycache__/
+app/__pycache__/
+
+

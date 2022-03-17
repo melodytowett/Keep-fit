@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 
 from .config import config_options
@@ -10,11 +11,13 @@ UPLOAD_FOLDER = 'app/static/img'
 
 
 app = Flask(__name__)
+
 app.config.from_object(config_options['development'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+CORS(app)
 
 from .models import User
 

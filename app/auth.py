@@ -1,10 +1,11 @@
 
-from urllib.parse import uses_relative
-from flask import Blueprint, redirect, url_for, render_template, request, flash
-from flask_login import login_user, login_required, logout_user
+
+from flask import Blueprint, redirect, url_for, render_template, request, flash, jsonify
+from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db
+import json
 
 from .models import Trainer, Trainee, Gig
 
@@ -14,106 +15,98 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/trainer/signup', methods=['GET', 'POST'])
 def trainer_signup():
-    if request.method == 'POST':
-        email = request.form.get('email').lower()
-        username = request.form.get('username').lower()
-        password = request.form.get('password')
-        phone_number = request.form.get('phone_number')
 
-        # Lookup if email or username exists
-        user_email = Trainer.query.filter_by(email=email).first()
-        user_username = Trainer.query.filter_by(username=username).first()
+    data = request.json
 
-        if user_email:
-            flash('Email already exists')
-            return render_template('trainer/signup.html')
-        if user_username:
-            flash('Username already taken')
-            return render_template('trainer/signup.html')
+    email = data['email']
+    username = data['username']
+    phone_number = data['phone_number']
+    password = data['password']
 
-        trainer = Trainer(email=email, username=username, password=generate_password_hash(
-            password), phone_number=phone_number, urole='TRAINER')
+    # Lookup if email or username exists
+    user_email = Trainer.query.filter_by(email=email).first()
+    user_username = Trainer.query.filter_by(username=username).first()
 
-        db.session.add(trainer)
-        db.session.commit()
+    if user_email:
+        return jsonify({'message': 'Email already exists', 'status': 'error'})
+    if user_username:
+        return jsonify({'message': 'Username already taken', 'status': 'error'})
 
-        return render_template('trainer/login.html')
+    trainer = Trainer(email=email, username=username, password=generate_password_hash(
+        password), phone_number=phone_number, urole='TRAINER')
 
-    return render_template('trainer/signup.html')
+    db.session.add(trainer)
+    db.session.commit()
+
+    return jsonify({'message': 'Trainer created', 'status': 'success'})
 
 
-@auth.route('/trainer/login', methods=['GET', 'POST'])
+@auth.route('/trainer/login', methods=['POST'])
 def trainer_login():
-    if request.method == 'POST':
-        username = request.form.get('username').lower()
-        password = request.form.get('password')
-        remember = True if request.form.get('remember') else False
+    data = request.json
 
-        trainer = Trainer.query.filter_by(username=username).first()
+    username = data['username']
+    password = data['password']
 
-        if not trainer:
-            flash('Trainer with that username does not exist')
-            return render_template('trainer/login.html')
-        if not check_password_hash(trainer.password, password):
-            flash('Incorect password.')
-            return render_template('trainer/login.html')
+    trainer = Trainer.query.filter_by(username=username).first()
 
-        # if the above check passes then...
-        login_user(trainer, remember=remember)
-        return render_template('trainer/profile.html')
+    if not trainer:
+        return jsonify({'message': 'No such user', 'status': 'error'})
+    if not check_password_hash(trainer.password, password):
+        return jsonify({'message': 'Wrong password', 'status': 'error'})
 
-    return render_template('/trainer/login.html')
+    # if the above check passes then...
+    login_user(trainer)
+    user_id = current_user.id
+    return jsonify({'message': 'Logged in', 'status': 'success', 'user_id': user_id})
 
 
-@auth.route('/trainee/signup', methods=['GET', 'POST'])
+@auth.route('/trainee/signup', methods=['POST'])
 def trainee_signup():
-    if request.method == 'POST':
-        email = request.form.get('email').lower()
-        username = request.form.get('username').lower()
-        password = request.form.get('password')
+    data = request.json
 
-        # Lookup if email or username exists
-        user_email = Trainee.query.filter_by(email=email).first()
-        user_username = Trainee.query.filter_by(username=username).first()
+    email = data['email']
+    username = data['username']
+    password = data['password']
 
-        if user_email:
-            flash('Email already exists')
-            return render_template('trainee/signup.html')
-        if user_username:
-            flash('Username already taken')
-            return render_template('trainee/signup.html')
+    # Lookup if email or username exists
+    user_email = Trainee.query.filter_by(email=email).first()
+    user_username = Trainee.query.filter_by(username=username).first()
 
-        trainee = Trainee(email=email, username=username, password=generate_password_hash(
-            password), urole='TRAINEE')
+    if user_email:
+        return jsonify({'message': 'Email already exists', 'status': 'error'})
+    if user_username:
+        return jsonify({'message': 'Username already taken', 'status': 'error'})
 
-        db.session.add(trainee)
-        db.session.commit()
-        return render_template('trainee/login.html')
+    trainee = Trainee(email=email, username=username, password=generate_password_hash(
+        password), urole='TRAINEE')
 
-    return render_template('trainee/signup.html')
+    db.session.add(trainee)
+    db.session.commit()
+
+    return jsonify({'message': 'Trainee created', 'status': 'success'})
 
 
-@auth.route('/trainee/login', methods=['GET', 'POST'])
+@auth.route('/trainee/login', methods=['POST'])
 def trainee_login():
-    if request.method == 'POST':
-        username = request.form.get('username').lower()
-        password = request.form.get('password')
-        remember = True if request.form.get('remember') else False
+    data = request.json
 
-        trainee = Trainee.query.filter_by(username=username).first()
+    username = data['username']
+    password = data['password']
 
-        if not trainee:
-            flash('Trainee with that username does not exist')
-            return render_template('trainee/login.html')
-        if not check_password_hash(trainee.password, password):
-            flash('Incorect password.')
-            return render_template('trainee/login.html')
+    trainee = Trainee.query.filter_by(username=username).first()
 
-        # if the above check passes then...
-        login_user(trainee, remember=remember)
-        return render_template('trainee/profile.html')
+    if not trainee:
+        print('Trainee with that username does not exist')
+        return jsonify({'message': 'Trainee with that username does not exist', 'status': 'error'})
+    if not check_password_hash(trainee.password, password):
+        print('Incorect password.')
+        return jsonify({'message': 'Incorect password.', 'status': 'error'})
 
-    return render_template('/trainee/login.html')
+    # if the above check passes then...
+    login_user(trainee)
+
+    return jsonify({'message': 'Trainee logged in', 'status': 'success', })
 
 
 @auth.route('/logout')

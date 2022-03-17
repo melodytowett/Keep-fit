@@ -1,6 +1,6 @@
 
 
-from flask import Blueprint, flash, redirect, render_template, url_for, request
+from flask import Blueprint, flash, redirect, render_template, url_for, request, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -15,35 +15,49 @@ import random
 main = Blueprint('main', __name__)
 
 
-@main.route('/')
+weather = {
+    "data": [
+        {
+            "day": "1/6/2019",
+            "temperature": "23",
+            "windspeed": "16",
+            "event": "Sunny"
+        },
+
+    ]}
+
+
+@main.route('/', methods=['GET'])
 def index():
     gigs = Gig.query.all()
-    return render_template('index.html', gigs=gigs)
+    # return render_template('index.html', gigs=gigs)
+    return "Welcome to CodezUp"
 
 
-@main.route('/create_gig', methods=['GET', 'POST'])
-@login_required
+@main.route('/weatherReport/')
+def WeatherReport():
+    global weather
+    return jsonify([weather])
+
+
+@main.route('/create_gig', methods=['POST'])
 def create_gig():
 
-    if current_user.urole != "TRAINER":
-        flash('You are not authorized to create a gig')
-        return redirect(url_for('main.index'))
-    if request.method == 'POST':
-        title = request.form.get('title')
-        price = request.form.get('price')
-        duration = request.form.get('duration')
-        category = request.form.get('category')
-        trainer_id = current_user.id
+    data = request.json
 
-        gig = Gig(title=title, price=price, duration=duration,
-                  category=category, trainer_id=trainer_id)
+    title = data['title']
+    price = data['price']
+    duration = data['duration']
+    category = data['category']
+    trainer_id = data['trainerId']
 
-        db.session.add(gig)
-        db.session.commit()
+    gig = Gig(title=title, price=price, duration=duration,
+              category=category, trainer_id=trainer_id)
 
-        return redirect(url_for("main.index"))
+    db.session.add(gig)
+    db.session.commit()
 
-    return render_template('trainer/create_gig.html', )
+    return jsonify({'message': 'Gig created', 'status': 'success'})
 
 
 @main.route('/book_gig/<gig_id>', methods=['GET', 'POST'])
@@ -74,7 +88,7 @@ def book_gig(gig_id):
     return redirect(url_for("main.index"))
 
 
-@main.route('/view_gig/<gig_id>', methods=['GET', 'POST'])
+@main.route('/view_gig/<gig_id>', methods=['GET'])
 def view_gig(gig_id):
 
     gig = Gig.query.filter_by(id=gig_id).first()
