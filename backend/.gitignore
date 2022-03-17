@@ -3,7 +3,7 @@ start.sh
 __pycache__/
 *.py[cod]
 *$py.class
-
+start.sh
 # C extensions
 *.so
 
