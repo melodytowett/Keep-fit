@@ -1,6 +1,7 @@
 
+from dataclasses import field
 from flask_login import UserMixin
-from app import db
+from app import db, ma
 
 
 class User(UserMixin, db.Model):
@@ -31,6 +32,18 @@ class Gig(db.Model):
         'user.id', ondelete='CASCADE'), nullable=False)
 
     enrolls = db.relationship('Enroll', backref='gig', passive_deletes=True)
+
+
+class GigSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'title', 'price', 'duration', 'category', 'trainer_id')
+
+        _links = ma.Hyperlinks(
+            {
+                "self": ma.URLFor("user_detail", values=dict(id="<id>")),
+                "collection": ma.URLFor("gigs"),
+            }
+        )
 
 
 class Enroll(db.Model):

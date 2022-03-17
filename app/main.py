@@ -1,11 +1,12 @@
 
 
+import json
 from flask import Blueprint, flash, redirect, render_template, url_for, request, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 
 
 from app import app, db
-from .models import Trainer, Trainee, Gig, Enroll
+from .models import Trainer, Trainee, Gig, Enroll, GigSchema
 
 
 import requests
@@ -30,8 +31,10 @@ weather = {
 @main.route('/', methods=['GET'])
 def index():
     gigs = Gig.query.all()
-    # return render_template('index.html', gigs=gigs)
-    return "Welcome to CodezUp"
+
+    gigs_schema = GigSchema(many=True)
+
+    return jsonify(gigs_schema.dump(gigs))
 
 
 @main.route('/weatherReport/')
