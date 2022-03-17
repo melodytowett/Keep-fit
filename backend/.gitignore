@@ -103,3 +103,4 @@ ENV/
 .idea/
 *.iml
 .DS_Store
+start.sh
