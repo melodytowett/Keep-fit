@@ -15,7 +15,9 @@
         <h2 class="text-center">Gigs Created</h2>
         <div class="py-4">
             <div class="container">
-                <div class="row p-3">
+                <div class="row p-3" *ngFor=" let gig of gigs">
+
+
                     <div class="col-md-4">
                         <div class="card">
                             <div class="cards">
@@ -23,9 +25,9 @@
                                     Gigs
                                 </h2>
                                 <div class="colored-text">
-                                    <p>Training hours: </p>
-                                    <p>Charges: </p>
-                                    <p>Training category: </p>
+                                    <p>Training hours: {{gig.duration}} </p>
+                                    <p>Charges: {{gig.price}} </p>
+                                    <p>Training category: {{gig.category}} </p>
                                 </div>
 
                             </div>
@@ -34,108 +36,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="cards">
-                                <h2 class="text-light">
-                                    Gigs
-                                </h2>
-                                <div class="colored-text">
-                                    <p>Training hours: </p>
-                                    <p>Charges: </p>
-                                    <p>Training category: </p>
-                                </div>
 
-                            </div>
-                            <div class="editing-gigs">
-                                <button type="button">Edit Gig</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="cards">
-                                <h2 class="text-light">
-                                    Gigs
-                                </h2>
-                                <div class="colored-text">
-                                    <p>Training hours: </p>
-                                    <p>Charges: </p>
-                                    <p>Training category: </p>
-                                </div>
 
-                            </div>
-                            <div class="editing-gigs">
-                                <button type="button">Edit Gig</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="row p-3">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="cards">
-                                <h2 class="text-light">
-                                    Gigs
-                                </h2>
-                                <div class="colored-text">
-                                    <p>Training hours: </p>
-                                    <p>Charges: </p>
-                                    <p>Training category: </p>
-                                </div>
 
-                            </div>
-                            <div class="editing-gigs">
-                                <button type="button">Edit Gig</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="cards">
-                                <h2 class="text-light">
-                                    Gigs
-                                </h2>
-                                <div class="colored-text">
-                                    <p>Training hours: </p>
-                                    <p>Charges: </p>
-                                    <p>Training category: </p>
-                                </div>
-
-                            </div>
-                            <div class="editing-gigs">
-                                <button type="button">Edit Gig</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="cards">
-                                <h2 class="text-light">
-                                    Gigs
-                                </h2>
-                                <div class="colored-text">
-                                    <p>Training hours: </p>
-                                    <p>Charges: </p>
-                                    <p>Training category: </p>
-                                </div>
-
-                            </div>
-                            <div class="editing-gigs">
-                                <button type="button">Edit Gig</button>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-               
             </div>
         </div>
     </div>
-</div>
-<div class="creating-gigs">
-    <div>
-        <a routerLink="/create-gig"><button type="button" class="btn btn-warning">Create Gig</button></a>   
-    </div> 
-</div>
+    <div class="creating-gigs">
+        <div>
+            <a routerLink="/create-gig"><button type="button"
+                    class="btn btn-warning">Create Gig</button></a>
+        </div>
+    </div>
 </div>
