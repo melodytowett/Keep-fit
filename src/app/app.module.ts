@@ -9,6 +9,9 @@ import { LoginTraineeComponent } from './auth/login-trainee/login-trainee.compon
 import { LoginTrainerComponent } from './auth/login-trainer/login-trainer.component';
 import { SignupTrainerComponent } from './auth/signup-trainer/signup-trainer.component';
 import { SignupTraineeComponent } from './auth/signup-trainee/signup-trainee.component';
+import { TrainerProfileComponent } from './trainer/trainer-profile/trainer-profile.component';
+import { TrainerCreateGigComponent } from './trainer/trainer-create-gig/trainer-create-gig.component';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { SignupTraineeComponent } from './auth/signup-trainee/signup-trainee.com
     LoginTraineeComponent,
     LoginTrainerComponent,
     SignupTrainerComponent,
-    SignupTraineeComponent
+    SignupTraineeComponent,
+    TrainerProfileComponent,
+    TrainerCreateGigComponent,
+    LogoutComponent
   ],
   imports: [
     HttpClientModule,

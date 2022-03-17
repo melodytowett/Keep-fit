@@ -42,6 +42,7 @@ export class LoginTrainerComponent implements OnInit {
       response = data
       if (response.status == 'success') {
         alert('Login Successful')
+        localStorage.setItem('trainerId', response.user_id);
       }else{
         alert('Login Failed')
       }

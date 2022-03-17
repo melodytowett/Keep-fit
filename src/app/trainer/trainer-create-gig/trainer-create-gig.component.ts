@@ -7,28 +7,34 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-login-trainee',
-  templateUrl: './login-trainee.component.html',
-  styleUrls: ['./login-trainee.component.css']
+  selector: 'app-trainer-create-gig',
+  templateUrl: './trainer-create-gig.component.html',
+  styleUrls: ['./trainer-create-gig.component.css']
 })
-export class LoginTraineeComponent implements OnInit {
+export class TrainerCreateGigComponent implements OnInit {
 
-  
-  username: string = '';
-  password: string = '';
-  url: string = environment.API_URL + 'trainee/login';
+  title :string = ''
+  price: string = '';
+  duration: string = '';
+  category:string=''
+
+  url: string = environment.API_URL + 'create_gig';
+
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
   }
 
-  loginTrainee() {
-
+  createGig() {
     const body = {
-      username: this.username,
-      password: this.password
+      title: this.title,
+      price: this.price,
+      duration: this.duration,
+      category:this.category,
+      trainerId : localStorage.getItem('trainerId')
     }
+    
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -40,12 +46,10 @@ export class LoginTraineeComponent implements OnInit {
     this.http.post(this.url, body, httpOptions).subscribe(data=>{
       response = data
       if (response.status == 'success') {
-        alert('Login Successful')
-        
-        
+        alert(response.message)
       }else{
-        alert('Login Failed')
-      }
+        alert(response.message)
+      }  
     })
   }
 
