@@ -17,22 +17,26 @@
           <ul class="nav navbar-nav">
             <li><a href="#" >Services</a>
             </li>
-
             <ul class="nav navbar-nav navbar-right">
               {% if current_user.is_authenticated %}
-              <li><a href="#">Profile</a></li>          
+              <li><a href="#">Profile</a></li>         
               <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-              {% else %}
+              {% if user.urole=='Trainer' %}
+               <li><button class="btn btn-secondary" type="button" style=" margin-top: 10px;">Create gig</button></li>
+               {% endif %}
+               {% else %} 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 450px; margin-top: 10px;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                 style="margin-left: 450px; margin-top: 10px;">
                   Sign in
                 </button>
+                {% endif %}
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                  <li> <a class="dropdown-item" href=" {{url_for('auth.login')}} "> As Trainer</a></li>
                  <li> <a class="dropdown-item" href=" {{url_for('auth.login_trainee')}} ">As Trainee</a></li>
                 </div>
               </div>
-               {% endif %}
+          
             </ul>
           </div>
         </div>

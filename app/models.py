@@ -1,7 +1,4 @@
-from calendar import c
-from enum import unique
-from errno import EMLINK
-from tokenize import String
+import profile
 from flask_login import UserMixin
 from importlib_metadata import email
 from .import login_manager
@@ -10,50 +7,41 @@ from .import db
 
 
 @login_manager.user_loader
-def load_user(id):
-    return Trainer.query.get(int(id))
+def load_user(user_id):
+    user = User.query.filter_by(id=user_id).first
+    return user
 
-class Trainer(UserMixin,db.Model):
-    __tablename__='trainers'
+class User(UserMixin,db.Model):
+    __tablename__='users'
     id = db.Column(db.Integer,primary_key=True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique=True)
-    phone_number = db.Column(db.Integer,unique=True)
-    pass_secure = db.Column(db.String(255))
-
-    @property
-    def password(self):
-        raise AttributeError('Password attrinute cant be read')
-
-    @password.setter
-    def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+    password = db.Column(db.String())
+    # profile_pic = db.Column(db.String(),nullable=False)
+    urole = db.Column(db.String(80))
 
 
-    def verify_password(self,password):
-        return check_password_hash(self.pass_secure,password)
+class Trainer(User):
+    __tablename__='trainers'
+    phone_number = db.Column(db.String(15),unique=True)
 
-    def __repr__(self):
-        return f'Trainer{self.username}'
+class Trainee(User):
+    __tablename__='trainees'
+  
+  
+    # @property
+    # def password(self):
+    #     raise AttributeError('Password attribute cant be read')
 
-class Trainee(UserMixin,db.Model):
-    __tablename__='trainee'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255))
-    email = db.Column(db.String(255),unique=True)
-    pass_secure = db.Column(db.String(255))
-   
-    @property
-    def password(self):
-        raise AttributeError('Password attrinute cant be read')
-
-    @password.setter
-    def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+    # @password.setter
+    # def password(self, password):
+    #     self.password = generate_password_hash(password)
 
 
     def verify_password(self,password):
-        return check_password_hash(self.pass_secure,password)
+        return check_password_hash(self.password,password)
 
     def __repr__(self):
-        return f'Trainee{self.username}'
+        return f'User{self.username}'
+
+ 

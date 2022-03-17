@@ -3,21 +3,20 @@
  {% block content %}
 
  <div class="container-fluid" >
-     <div class="row " style="background-color: rgb(255, 166, 0); width: 800px; margin-left: 100px;">
+     <div class="row"> 
+         <div class="card">
+             <div class="card-body">
+                 
          <div class="col-md-2 col-sm-4"></div>
            <!--Flash message -->
-      {% for message in get_flashed_messages() %}
-        <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
-        </div>
-      {% endfor %}
+ 
          <div class="col-md-4 col-sm-6">
              {{wtf.quick_form(log_form)}}
              <p>Don't have an account? </p>
              <a href=" {{url_for('auth.register_trainee')}} ">Register here</a>
          </div>
-          
+             </div>
+         </div>
      </div>
  </div>
  {% endblock%}
