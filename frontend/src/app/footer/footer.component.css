@@ -1,0 +1,41 @@
+footer {
+    background-image: url(../../assets/images/card-background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 40rem;
+    /* margin-top: 100px; */
+}
+
+.logo img {
+    border-radius: 20px;
+    margin: 150px 0px 0px 10px;
+}
+
+.footer {
+    margin: 120px 0px 0px 10px;
+}
+
+.cont-info {
+    padding: 0px 20px 0px 10px;
+}
+
+.links {
+    padding: 0px 10px;
+}
+hr {
+    margin-top: 200px;
+    background-color: #fff;
+    height: 2px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.social {
+    padding-left: 30%;
+}
+
+.social img {
+    margin-left: 50px;
+}
+

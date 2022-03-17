@@ -1,0 +1,31 @@
+.top {
+    background-image: url(../../assets/images/background.png);
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    /* background-size: 1600px; */
+    background-image: url(../../assets/images/background2.png);
+    height: 60rem;
+}
+
+.top img {
+    position: absolute;
+    right:300px;
+}
+
+.light-yellow {
+    color: #ECE30E;;
+    text-shadow: 2px 2px #FF0000;
+}
+
+.white {
+    color: #ffff;
+}
+
+.contact {
+    background-image: url(../../assets/images/white-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30rem;
+    margin-bottom: 100px;
+}

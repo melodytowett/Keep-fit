@@ -1,0 +1,64 @@
+.top {
+    background-image: url(../../assets/images/background.png);
+    background-repeat: no-repeat;
+    /* background-position: unset; */
+    background-size: cover;
+    /* background-size: 1600px; */
+    background-image: url(../../assets/images/background2.png);
+    height: 50rem;
+}
+
+.top img {
+    margin: 100px 0px 0px 100px;
+}
+
+.light-yellow {
+    color: #ECE30E;;
+    text-shadow: 2px 2px #FF0000;
+}
+
+.profile {
+    margin: 150px 0px 0px 200px;
+}
+
+.profile p {
+    color: #fff;
+    margin: 10px 0px 0px 0px;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.gigs {
+    background-image: url(../../assets/images/white-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 55rem;
+}
+
+.card {
+    background-image: url(../../assets/images/card.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    height: 180px;
+    margin: 50px;
+}
+
+.cards {
+    display: flex;
+    padding: 20px;
+}
+
+.cards h2 {
+    margin: 20px 0px 0px 20px;
+    padding: 15px 0px;
+}
+
+.colored-text {
+    color: #ECE30E;
+    margin: 0px 20px 0px 60px;
+}
+
+.vr {
+    border: 1px solid #000;
+}

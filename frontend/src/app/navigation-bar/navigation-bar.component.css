@@ -1,0 +1,8 @@
+.navbar-nav > li {
+  padding-left:30px;
+  padding-right:50px;
+}
+
+nav .nav-link {
+  color: #ECE30E;
+}
