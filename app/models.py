@@ -5,7 +5,6 @@ from .import login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from .import db
 
-
 @login_manager.user_loader
 def load_user(user_id):
     user = User.query.filter_by(id=user_id).first
