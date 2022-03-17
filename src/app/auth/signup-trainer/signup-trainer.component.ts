@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-trainer',
@@ -42,6 +42,8 @@ export class SignupTrainerComponent implements OnInit {
       response = data
       if (response.status == 'success') {
         this.router.navigate(['/login-trainer']);
+      }else{
+        alert(response.message)
       }
       
       
