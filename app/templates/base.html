@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}} ">
+    <title>Flask Blog</title>
+</head>
+
+<body>
+    <div id="container">
+
+        <header class="header">
+
+            <h1 class="logo_name">
+                <a href="{{url_for('main.index')}}">Blog</a>
+            </h1>
+
+            <nav class="navbar">
+
+                {% if current_user.urole=='TRAINER' %}
+                <a href="{{ url_for('main.create_gig') }}" class="navbar-item btn">
+                    Create gig
+                </a>
+                {% endif %}
+
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('main.index') }}">
+                    <img src="../static/img/{{current_user.profile_pic}} "
+                        alt="Profile Img" class="nav-profile__img">
+                </a>
+                {% else %}
+                <a href="{{ url_for('auth.trainer_login') }}" class="navbar-item btn">
+                    Login-Trainer
+                </a>
+
+                <a href="{{ url_for('auth.trainer_signup') }}" class="navbar-item btn">
+                    Sign Up-Trainer
+                </a>
+
+                <!-- Trainee -->
+                <a href="{{ url_for('auth.trainee_login') }}" class="navbar-item btn">
+                    Login - trainee
+                </a>
+
+                <a href="{{ url_for('auth.trainee_signup') }}" class="navbar-item btn">
+                    Sign Up- trainee
+                </a>
+                {% endif %}
+
+
+            </nav>
+
+        </header>
+
+        <main class="main">
+
+            {% block content %}
+            {% endblock %}
+
+
+        </main>
+
+    </div>
+
+
+</body>
+
+</html>

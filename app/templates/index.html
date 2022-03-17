@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{% import "macros.html" as macro with context %}
+
+{% block content %}
+
+
+<aside class="sidebar">
+    {% include 'sidebar.html' %}
+</aside>
+
+<section class="content">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+    {% for gig in gigs %}
+
+
+    <div class="gig {{className}} ">
+
+
+        <p> {{gig.title}} </p>
+        <p> {{gig.price}} </p>
+        <p> {{gig.category}} </p>
+
+        {% if current_user.urole=='TRAINEE'%}
+        <a href="{{url_for('main.book_gig', gig_id=gig.id)}}  ">Book Gig</a>
+
+
+        {% for enroll in gig.enrolls %}
+        {% if enroll.trainee_id == current_user.id %}
+        <p class="active-gig"> You are enrolled </p>
+        {% endif %}
+        {% endfor %}
+
+        <br>
+
+        <a href="{{url_for('main.view_gig', gig_id=gig.id)}}  ">View Gig</a>
+        {% endif %}
+
+
+    </div>
+
+    <hr>
+
+
+    {% endfor %}
+
+</section>
+
+<aside class="quote">
+
+
+</aside>
+
+
+{% endblock %}

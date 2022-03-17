@@ -1,0 +1,35 @@
+<div class="hashtags">
+    <h4 class="sidebar__title">
+        Categories
+    </h4>
+    {% for blog in blogs %}
+    <a href="/category/{{blog.category}}" class="hashtag">
+        #{{blog.category}}
+    </a>
+    {% endfor %}
+
+
+</div>
+
+
+{% if current_user.is_authenticated %}
+{% if page=='profile' %}
+<div class="profile-image">
+    <img src="../static/img/{{current_user.profile_pic}}" alt="Profile Img"
+        class="user-profile__img">
+
+    <a href="{{url_for('main.upload_profile_pic')}} ">
+        <img src="{{url_for('static', filename='img/edit-pen.svg')}} " alt="Edit"
+            class="edit-icon--profile__img">
+    </a>
+</div>
+
+{% endif%}
+
+
+<a href="{{ url_for('auth.logout') }}" class="logout btn">
+    <img src="{{ url_for('static', filename='img/logout.svg') }}" class="logout-icon v">
+    Logout
+</a>
+
+{% endif %}

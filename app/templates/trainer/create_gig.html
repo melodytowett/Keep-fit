@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<aside class="sidebar">
+    {% include 'sidebar.html' %}
+</aside>
+
+<section class="content">
+
+
+    <form action="/create_gig" method="POST" class="blog-form">
+
+        <label for="title">Blog title</label>
+        <input type="text" name="title" placeholder="Blog title">
+
+        <label for="price">Price</label>
+        <input type="number" name="price">
+
+        <label for="duration">Duration in days</label>
+        <input type="text" name="duration">
+
+        <label for="category">Category</label>
+        <select required name="category">
+            <option value="">Select category</option>
+            <option value="back">Back</option>
+            <option value="cardio">Cardio</option>
+            <option value="chest">Chest</option>
+        </select>
+
+
+        <button type="submit" class="btn">Create</button>
+
+
+    </form>
+
+</section>
+
+
+<aside class="quote">
+
+
+</aside>
+{% endblock %}

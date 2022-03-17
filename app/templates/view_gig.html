@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% import "macros.html" as macro with context %}
+
+{% block content %}
+
+
+<aside class="sidebar">
+    {% include 'sidebar.html' %}
+</aside>
+
+<section class="content">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+    <p>{{dis_gig.id}} </p>
+    <img src="{{dis_gig.gifUrl}} " alt="">
+
+
+</section>
+
+<aside class="quote">
+
+
+</aside>
+
+
+{% endblock %}
