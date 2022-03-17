@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!-- Styles block -->
+
+{%block styles%}
+    {{ super() }}
+
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+{%endblock%}
+
+<!-- Content block -->
+{%block content%}
+
+
+<div class="container" >
+    <h1 class="head text-primary"><b>Welcome to the Fire Fitness Website</b></h1>
+    <hr>
+
+    <!-- Contact Form -->
+    <div>
+        {{ wtf.quick_form(contact_form) }}
+    </div>
+
+</div>
+{%endblock%}
+<!-- style="background-image: url(https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmxvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60); background-repeat: no-repeat; background-size: cover; height: 80vh;  background-position: center; border-radius: 20px;" -->
