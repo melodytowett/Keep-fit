@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TrainerComponent } from './trainer/trainer.component';
 import { TraineeComponent } from './trainee/trainee.component';
 import { HomeComponent } from './home/home.component';
+import { CreateGigComponent } from './create-gig/create-gig.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     TrainerComponent,
     TraineeComponent,
-    HomeComponent
+    HomeComponent,
+    CreateGigComponent
   ],
   imports: [
     BrowserModule,
