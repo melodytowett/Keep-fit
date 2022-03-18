@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_cors import CORS
+from flask_marshmallow import Marshmallow
 
 
 from .config import config_options
@@ -18,6 +19,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
+ma = Marshmallow(app)
 
 from .models import User
 
