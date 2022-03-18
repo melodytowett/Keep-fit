@@ -11,30 +11,22 @@
             <p>Training Category: Back | Cardio | Chest</p>
         </div>
     </div>
-    <div class="gigs">
+    <div class="gigs ">
         <h2 class="text-center">Gigs Created</h2>
         <div class="py-4">
-            <div class="container">
-                <div class="row p-3" *ngFor=" let gig of gigs">
+            <div class="container gigs-cont">
+                <div class="gig" *ngFor=" let gig of gigs">
 
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="cards">
-                                <h2 class="text-light">
-                                    Gigs
-                                </h2>
-                                <div class="colored-text">
-                                    <p>Training hours: {{gig.duration}} </p>
-                                    <p>Charges: {{gig.price}} </p>
-                                    <p>Training category: {{gig.category}} </p>
-                                </div>
+                    <h2 class="text-light">
+                        Gigs
+                    </h2>
+                    <div class="colored-text">
+                        <p>Training hours: {{gig.duration}} </p>
+                        <p>Charges: {{gig.price}} </p>
+                        <p>Training category: {{gig.category}} </p>
 
-                            </div>
-                            <div class="editing-gigs">
-                                <button type="button">Edit Gig</button>
-                            </div>
-                        </div>
+                        <button type="button" class="edit-button">Edit Gig</button>
                     </div>
 
 
