@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="sign-up-form d-flex justify-content-center">
+        <form class="w-50 shadow-lg p-3 rounded-lg" (ngSubmit)="signupTrainee()">
+            <h2 class="light-yellow text-center">Trainee Sign-up</h2>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter your email"
+                    [(ngModel)]="email" name="email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your
+                    email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1">Username</label>
+                <input type="text" class="form-control" id="exampleInputPassword1"
+                    placeholder="Enter your name" [(ngModel)]="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1"
+                    placeholder="Password" [(ngModel)]="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+    </div>
+</div>

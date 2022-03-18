@@ -3,20 +3,16 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-trainer-sign-up',
+  templateUrl: './trainer-sign-up.component.html',
+  styleUrls: ['./trainer-sign-up.component.css']
 })
-export class HomeComponent implements OnInit {
+export class TrainerSignUpComponent implements OnInit {
 
   constructor(private router: Router, private readonly http: HttpClient) { }
-  gotoHome() {
-    this.router.navigate(['home'])
+  gotoTraineeSignUp() {
+    this.router.navigate(['trainee-sign-up'])
   }
-
-  // gotoTrainer() {
-  //   this.router.navigate(['home'])
-  // }
 
   ngOnInit(): void {
   }

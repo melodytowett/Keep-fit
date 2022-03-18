@@ -31,7 +31,9 @@ export class CreateGigComponent implements OnInit {
       price: this.price,
       duration: this.duration,
       category:this.category,
-      trainerId : '1'
+
+      trainerId : localStorage.getItem('trainerId')
+
     }
     
 
