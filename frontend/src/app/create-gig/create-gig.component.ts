@@ -31,11 +31,7 @@ export class CreateGigComponent implements OnInit {
       price: this.price,
       duration: this.duration,
       category:this.category,
-<<<<<<< HEAD
       trainerId : "1"
-=======
-      trainerId : '1'
->>>>>>> 25e267c2660a350b8286260d76110566a6118eb5
     }
     
 

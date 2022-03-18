@@ -14,6 +14,10 @@ import { HomeComponent } from './home/home.component';
 import { CreateGigComponent } from './create-gig/create-gig.component';
 import { ViewGigsComponent } from './view-gigs/view-gigs.component';
 import { DisplayGigComponent } from './display-gig/display-gig.component';
+import { TrainerLoginComponent } from './login/trainer-login/trainer-login.component';
+import { TraineeLoginComponent } from './login/trainee-login/trainee-login.component';
+import { TraineeSignUpComponent } from './sign-up/trainee-sign-up/trainee-sign-up.component';
+import { TrainerSignUpComponent } from './sign-up/trainer-sign-up/trainer-sign-up.component';
 
 
 @NgModule({
@@ -26,7 +30,11 @@ import { DisplayGigComponent } from './display-gig/display-gig.component';
     HomeComponent,
     CreateGigComponent,
     ViewGigsComponent,
-    DisplayGigComponent
+    DisplayGigComponent,
+    TrainerLoginComponent,
+    TraineeLoginComponent,
+    TraineeSignUpComponent,
+    TrainerSignUpComponent
   ],
   imports: [
     HttpClientModule,
