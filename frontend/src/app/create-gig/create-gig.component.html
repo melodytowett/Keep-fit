@@ -1,29 +1,43 @@
 <div class="container-fluid">
     <div class="gig-form d-flex justify-content-center">
-        <form class="w-50 shadow-lg p-3 rounded-lg">
+        <form class="w-50 shadow-lg p-3 rounded-lg" (ngSubmit)="createGig()"
+            method="post">
             <h2 class="light-yellow text-center">Gig Form</h2>
             <div class="form-group">
-                <label for="exampleInputUsername1">Training Time:</label>
-                <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter your training time">
+                <label for="exampleInputUsername1">Title:</label>
+                <input type="text" [(ngModel)]="title" name="title" class="form-control"
+                    id="exampleInputName1">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Charges:</label>
-                <input type="charges" class="form-control" id="exampleInputCharges1" aria-describedby="emailHelp"
-                    placeholder="Enter your charges">
-                <small id="emailHelp" class="form-text text-muted">Pricing may vary at Trainers discretion.
+                <input type="number" class="form-control" name="price"
+                    aria-describedby="emailHelp" [(ngModel)]="price">
+                <small id="emailHelp" class="form-text text-muted">Pricing may vary at
+                    Trainers discretion.
                 </small>
             </div>
+
             <div class="form-group">
-                <label for="exampleTrainingSelect1" data-live-search-placeholder="">Choose training category:</label>
-                <select class="form-control" id="exampleTrainingSelect1">
+                <label for="exampleInputEmail1">Duration:</label>
+                <input type="text" class="form-control" name="duration"
+                    [(ngModel)]="duration">
+                <small id="emailHelp" class="form-text text-muted">Number of days it will
+                    take .
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleTrainingSelect1" data-live-search-placeholder="">Choose
+                    training category:</label>
+                <select class="form-control" [(ngModel)]="category" name="category">
                     <option value="" disabled selected hidden>Choose category</option>
-                    <option>Abs</option>
-                    <option>Back</option>
-                    <option>Cardio</option>
-                    <option>Chest</option>
+                    <option value="abs">Abs</option>
+                    <option value="back">Back</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="chest">Chest</option>
                 </select>
             </div>
-            
+
             <button type="submit" class="btn btn-warning">Submit</button>
         </form>
     </div>
