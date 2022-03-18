@@ -17,7 +17,6 @@
             <div class="container gigs-cont">
                 <div class="gig" *ngFor=" let gig of gigs">
 
-
                     <h2 class="text-light">
                         Gigs
                     </h2>
@@ -26,7 +25,10 @@
                         <p>Charges: {{gig.price}} </p>
                         <p>Training category: {{gig.category}} </p>
 
-                        <button type="button" class="edit-button">Edit Gig</button>
+                        <a routerLink="/display-gig/{{gig.id}}">
+
+                            <button class="edit-button">View Gig</button>
+                        </a>
                     </div>
 
 
