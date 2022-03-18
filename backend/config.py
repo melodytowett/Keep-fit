@@ -19,9 +19,13 @@ class Config:
 
 
 class ProdConfig(Config):
-    pass
+    DATABASE_URL='postgresql+psycopg2://postgres:Vanilla@localhost/Fitness'
+    SECRET_KEY='fire-fitness'
 
 class DevConfig(Config):    
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:Vanilla@localhost/Fitness'
+    SECRET_KEY='fire-fitness'
+
     DEBUG = True
 
 class TestConfig(Config):
