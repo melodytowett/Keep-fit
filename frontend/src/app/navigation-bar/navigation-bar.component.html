@@ -16,53 +16,43 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
-                </li>
-
-
+                </li>  
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+                <li class="nav-item dropdown" ngDropdown>
+                    <a class="nav-link uib-dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sign-up
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Trainer</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Trainee</a>
-                    </div>
+                     <div>
+                          <a routerLink="/trainer"><button type="button" class="btn btn-success" style="height: 30px; padding: 5px; margin-top: 10px;">Trainer</button></a>   
+                      </div>
+
+                <div>
+                    <a routerLink="/trainee"><button type="button" class="btn btn-info" style="height: 30px; padding: 5px;">Trainee</button></a> 
+                </div> 
                 </li>
-
+                
                 <div>
-                    <a routerLink="/trainer"><button type="button"
-                            class="btn btn-success">Trainer</button></a>
-                </div>
-
-                <div>
-                    <a routerLink="/trainee"><button type="button"
-                            class="btn btn-info">Trainee</button></a>
-                </div>
-
-                <div>
-                    <a routerLink="/view-gigs"><button type="button"
-                            class="btn btn-info">View gigs</button></a>
-                </div>
-
+                  
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         Sign-in
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Trainer</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Trainee</a>
-                    </div>
+                       <div>
+                          <a routerLink="/trainer"><button type="button" class="btn btn-success" style="height: 30px; padding: 5px;">Trainer</button></a>   
+                      </div>
+                <div>
+                    <a routerLink="/trainee"><button type="button" class="btn btn-info" style="height: 30px; padding: 5px;">Trainee</button></a> 
+                </div> 
                 </li>
-
-            </ul>
+                </div>
+                </ul>
+            
+          
         </div>
     </nav>
 </div>
