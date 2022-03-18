@@ -91,8 +91,8 @@ def book_gig(gig_id):
     return redirect(url_for("main.index"))
 
 
-@main.route('/view_gig/<gig_id>', methods=['GET'])
-def view_gig(gig_id):
+@main.route('/display-gig/<gig_id>', methods=['GET'])
+def display_gig(gig_id):
 
     gig = Gig.query.filter_by(id=gig_id).first()
     gig_category = gig.category
@@ -108,4 +108,4 @@ def view_gig(gig_id):
     random_index = random.randint(0, 10)
     dis_gig = response.json()[random_index]
 
-    return render_template('view_gig.html', dis_gig=dis_gig)
+    return jsonify(dis_gig)
