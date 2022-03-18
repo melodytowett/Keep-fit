@@ -21,8 +21,8 @@ const routes: Routes = [
   { path: 'trainer-login', component: TrainerLoginComponent},
   { path: 'trainee-login', component: TraineeLoginComponent},
   { path: 'trainer-sign-up', component: TrainerSignUpComponent},
-  { path: 'trainee-sign-up', component: TraineeSignUpComponent}
-
+  { path: 'trainee-sign-up', component: TraineeSignUpComponent},
+  { path: '', component: HomeComponent}
 
 ];
 
