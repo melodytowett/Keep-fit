@@ -1,8 +1,53 @@
 .navbar-nav > li {
-  padding-left:30px;
-  padding-right:50px;
+  padding-left: 30px;
+  padding-right: 50px;
 }
 
 nav .nav-link {
-  color: #ECE30E;
+  color: #ece30e;
+}
+
+/* Dropdown */
+.auth-dropdown {
+  height: 30px;
+  background-color: red;
+  color: #fff;
+  padding: 8px 15px;
+  margin: 10px;
+}
+
+.post-update {
+  position: relative;
+}
+
+.auth-dropdown__container {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+
+  opacity: 0;
+
+  visibility: hidden;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+
+  transition: all 0.5s;
+}
+
+.hidden {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
+.auth-dropdown__item {
+  padding: 0.5rem;
+  text-decoration: none;
+  padding: 10px;
+  color: skyblue;
+}
+
+.auth-dropdown__item:hover {
+  color: #fff;
 }

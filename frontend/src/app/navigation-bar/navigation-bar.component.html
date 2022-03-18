@@ -5,7 +5,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" routerLink="/home">Home <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -17,35 +18,42 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
-            <div>
-                <a routerLink="/trainer-login"><button type="button" class="btn btn-danger"
-                        style="height: 30px; padding: 5px; margin-top: 10px;">Trainer-login</button></a>
+
+            <div class="post-update">
+                <span class="auth-dropdown">Sign-in </span>
+                <span class="auth-dropdown__container">
+                    <a routerLink="/trainer-login" class="auth-dropdown__item">Trainer</a>
+                    <a routerLink="/trainee-login" class="auth-dropdown__item">Trainee</a>
+                </span>
             </div>
-            <div>
-                <a routerLink="/trainee-login"><button type="button" class="btn btn-danger"
-                        style="height: 30px; padding: 5px; margin-top: 10px;">Trainee-login</button></a>
+
+            <div class="post-update">
+                <span class="auth-dropdown">Sign-up </span>
+                <span class="auth-dropdown__container">
+                    <a routerLink="/trainer-sign-up"
+                        class="auth-dropdown__item">Trainer</a>
+                    <a routerLink="/trainee-sign-up"
+                        class="auth-dropdown__item">Trainee</a>
+                </span>
             </div>
-            <div>
-                <a routerLink="/trainer-sign-up"><button type="button" class="btn btn-warning"
-                        style="height: 30px; padding: 5px; margin-top: 10px;">Trainer-Sign-up</button></a>
-            </div>
-            <div>
-                <a routerLink="/trainee-sign-up"><button type="button" class="btn btn-warning"
-                        style="height: 30px; padding: 5px; margin-top: 10px;">Trainee-Sign-up</button></a>
-            </div>
+
+
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown" ngDropdown>
-                    <a class="nav-link uib-dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link uib-dropdown-toggle" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         Sign-up
                     </a>
                     <div>
-                        <a routerLink="/trainer"><button type="button" class="btn btn-success"
+                        <a routerLink="/trainer"><button type="button"
+                                class="btn btn-success"
                                 style="height: 30px; padding: 5px; margin-top: 10px;">Trainer</button></a>
                     </div>
 
                     <div>
-                        <a routerLink="/trainee"><button type="button" class="btn btn-info"
+                        <a routerLink="/trainee"><button type="button"
+                                class="btn btn-info"
                                 style="height: 30px; padding: 5px;">Trainee</button></a>
                     </div>
                 </li>
@@ -54,16 +62,19 @@
 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Sign-in
                         </a>
                         <div>
-                            <a routerLink="/trainer"><button type="button" class="btn btn-success"
+                            <a routerLink="/trainer"><button type="button"
+                                    class="btn btn-success"
                                     style="height: 30px; padding: 5px;">Trainer</button></a>
                         </div>
                         <div>
-                            <a routerLink="/trainee"><button type="button" class="btn btn-info"
+                            <a routerLink="/trainee"><button type="button"
+                                    class="btn btn-info"
                                     style="height: 30px; padding: 5px;">Trainee</button></a>
                         </div>
                     </li>
@@ -73,5 +84,7 @@
 
         </div>
     </nav>
+
+
 </div>
 <router-outlet></router-outlet>
