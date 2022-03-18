@@ -13,6 +13,7 @@ import { TraineeComponent } from './trainee/trainee.component';
 import { HomeComponent } from './home/home.component';
 import { CreateGigComponent } from './create-gig/create-gig.component';
 import { ViewGigsComponent } from './view-gigs/view-gigs.component';
+import { DisplayGigComponent } from './display-gig/display-gig.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ViewGigsComponent } from './view-gigs/view-gigs.component';
     TraineeComponent,
     HomeComponent,
     CreateGigComponent,
-    ViewGigsComponent
+    ViewGigsComponent,
+    DisplayGigComponent
   ],
   imports: [
     HttpClientModule,
