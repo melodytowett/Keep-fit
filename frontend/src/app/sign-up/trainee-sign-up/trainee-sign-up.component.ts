@@ -30,14 +30,12 @@ export class TraineeSignUpComponent implements OnInit {
   }
 
   signupTrainee() {
-
     const body = {
       email: this.email,
       username: this.username,
       password: this.password
     }
     
-
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
@@ -45,12 +43,10 @@ export class TraineeSignUpComponent implements OnInit {
 
     let response:any={}
 
-
-
     this.http.post(this.url, body, httpOptions).subscribe(data=>{
       response = data
       if (response.status == 'success') {
-        this.router.navigate(['/login-trainer']);
+        this.router.navigate(['/trainee-login']);
       }else{
         alert(response.message)
       }
